@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ ! $1 ]; then
-  echo "Please, specify date for the report" > /dev/stderr
+  echo "Please, specify date for the report: YYYY-MM-DD" > /dev/stderr
   exit
 fi
 
@@ -21,4 +21,3 @@ hamster-cli list "$HAMSTER_DATE" | \
   sed -e '1,2d' | \
   sed -re "s/[^(]+\((.*)\)/\1/" | \
   awk -f report.awk #| mail -s "Report $DATE" $RECIPIENTS
-
