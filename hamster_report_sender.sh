@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if [ ! $1 ]; then
-  echo "Please, specify date for the report: YYYY-MM-DD" > /dev/stderr
-  exit
+  echo "Please, specify date for the report: YYYY-MM-DD"
+  exit 1
 fi
 
 if [ -f ./recipients.conf ]; then
