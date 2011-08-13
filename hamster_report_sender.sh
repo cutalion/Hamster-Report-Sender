@@ -5,10 +5,10 @@ if [ ! $1 ]; then
   exit 1
 fi
 
-if [ -f ./recipients.conf ]; then
-  . ./recipients.conf
+if [ -f ./config/recipients.conf ]; then
+  . ./config/recipients.conf
 else
-  echo "Create a recipients.conf file, please. See recipients.conf.template for example" > /dev/stderr
+  echo "Create a config/recipients.conf file, please. See config/recipients.conf.template for example" > /dev/stderr
   exit
 fi
 

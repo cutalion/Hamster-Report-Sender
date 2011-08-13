@@ -1,7 +1,7 @@
-if [ -f ./clockwork.conf ]; then
-  . ./clockwork.conf
+if [ -f ./config/clockwork.conf ]; then
+  . ./config/clockwork.conf
 else
-  echo "Create a clockwork.conf file, please. See clockwork.conf.template for example"
+  echo "Create a config/clockwork.conf file, please. See config/clockwork.conf.template for example"
   exit 1;
 fi
 
