@@ -1,9 +1,7 @@
-if [ -f ./config/clockwork.conf ]; then
-  . ./config/clockwork.conf
-else
-  echo "Create a config/clockwork.conf file, please. See config/clockwork.conf.template for example"
-  exit 1;
-fi
+#!/bin/bash
+. ./utils.sh
+
+include ./config/clockwork.conf
 
 login_page=`curl $clockwork_url/login 2>/dev/null`
 

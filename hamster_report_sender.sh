@@ -1,22 +1,17 @@
 #!/bin/sh
+. ./utils.sh
 
 if [ ! $1 ]; then
   echo "Please, specify date for the report: YYYY-MM-DD"
   exit 1
 fi
 
-if [ -f ./config/recipients.conf ]; then
-  . ./config/recipients.conf
-else
-  echo "Create a config/recipients.conf file, please. See config/recipients.conf.template for example" > /dev/stderr
-  exit
-fi
+include ./config/recipients.conf ./config/clockwork.conf
 
 DATE=$1
 HAMSTER_DATE="$DATE 00:00:00"
 
 
-# hamster-cli list "$HAMSTER_DATE" | sed -e '1,2d' | sed -re "s/[^(]+\\((.*)\\)/\\1/" | sort -t"@" -k2 > $list_file
 hamster-cli list "$HAMSTER_DATE" | \
   sed -e '1,2d' | \
   sed -re "s/[^(]+\((.*)\)/\1/" | \
