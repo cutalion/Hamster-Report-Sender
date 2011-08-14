@@ -6,7 +6,7 @@ if [ ! $1 ]; then
   exit 1
 fi
 
-include ./config/recipients.conf ./config/clockwork.conf
+include ./config/recipients.conf
 
 DATE=$1
 HAMSTER_DATE="$DATE 00:00:00"
