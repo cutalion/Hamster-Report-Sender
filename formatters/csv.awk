@@ -29,17 +29,14 @@ END {
       total_minutes += minutes
 
       hours = minutes / 60
-      if (project != last_project) {
-        print ""
-        print project
-      }
-      print (sprintf("%.2fh | %s", hours, task ))
+      print (sprintf("%s, \"%.2fh\", %s", escape(trim(project)), hours, escape(trim(task)) ))
 
       last_project = project
     }
   }
-
-
-  print ""
-  print (sprintf("Total: %.2fh", total_minutes / 60))
 } 
+
+function ltrim(s)  { sub(/^[ \t]+/, "", s); return s }
+function rtrim(s)  { sub(/[ \t]+$/, "", s); return s }
+function trim(s)   { return rtrim(ltrim(s)); }
+function escape(s) { sub(/"/, "\"\"", s); return ("\"" s "\"") }

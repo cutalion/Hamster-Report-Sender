@@ -8,11 +8,13 @@ fi
 
 include ./config/recipients.conf
 
-DATE=$1
-HAMSTER_DATE="$DATE 00:00:00"
+date=$1
+formatter=${2:-email}
+hamster_date="$date 00:00:00"
 
 
-hamster-cli list "$HAMSTER_DATE" | \
+
+hamster-cli list "$hamster_date" | \
   sed -e '1,2d' | \
   sed -re "s/[^(]+\((.*)\)/\1/" | \
-  awk -f formatters/email.awk #| mail -s "Report $DATE" $RECIPIENTS
+  awk -f formatters/$formatter.awk #| mail -s "Report $DATE" $RECIPIENTS
