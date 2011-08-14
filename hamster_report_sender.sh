@@ -15,4 +15,4 @@ HAMSTER_DATE="$DATE 00:00:00"
 hamster-cli list "$HAMSTER_DATE" | \
   sed -e '1,2d' | \
   sed -re "s/[^(]+\((.*)\)/\1/" | \
-  awk -f report.awk #| mail -s "Report $DATE" $RECIPIENTS
+  awk -f formatters/email.awk #| mail -s "Report $DATE" $RECIPIENTS
