@@ -39,4 +39,4 @@ END {
 function ltrim(s)  { sub(/^[ \t]+/, "", s); return s }
 function rtrim(s)  { sub(/[ \t]+$/, "", s); return s }
 function trim(s)   { return rtrim(ltrim(s)); }
-function escape(s) { sub(/"/, "\"\"", s); return ("\"" s "\"") }
+function escape(s) { gsub(/"/, "\"\"", s); return ("\"" s "\"") }
